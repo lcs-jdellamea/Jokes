@@ -18,12 +18,14 @@ struct JokeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("You see, mountains aern't just funny.")
+                Text("You see, mountains aren't just funny.")
                     .font(.title)
                     .multilineTextAlignment(.center)
                 
                 Button(action: {
-                    punchlineOpacity = 1.0
+                    withAnimation(.easeIn(duration:1.0)) {
+                        punchlineOpacity = 1.0
+                    }
                 }, label: {
                     Image(systemName: "arrow.down.circle.fill")
                         .resizable()
