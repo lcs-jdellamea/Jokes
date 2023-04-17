@@ -14,4 +14,7 @@ struct Joke: Identifiable, Codable {
     let id: Int
 }
 
-let exampleJoke = Joke(type: "general", setup: "How much doeas a hipster weigh?", punchline: "An instagram.", id: 146)
+let exampleJoke = Joke(type: "general",
+                       setup: "How much doeas a hipster weigh?",
+                       punchline: "An instagram.",
+                       id: 146)
