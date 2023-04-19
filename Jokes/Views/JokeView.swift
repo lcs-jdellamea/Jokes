@@ -5,11 +5,15 @@
 //  Created by Jack Dellamea on 4/17/23.
 //
 
+import Blackbird
 import SwiftUI
 
 struct JokeView: View {
     
     //  MARK: Stored properties
+    
+    // Access the connection to the database (needed to add a new record)
+    @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     
     // 0.0 is invisible, 1.0 is visible
     @State var punchlineOpacity = 0.0
@@ -56,21 +60,37 @@ struct JokeView: View {
                 Spacer()
                 
                 Button(action: {
-                                     // Reset the interface
-                                     punchlineOpacity = 0.0
+                    // Reset the interface
+                    punchlineOpacity = 0.0
 
-                                     Task {
-                                         // Get another joke
-                                         withAnimation {
-                                             currentJoke = nil
-                                         }
-                                         currentJoke = await NetworkService.fetch()
-                                     }
-                                 }, label: {
-                                     Text("Fetch another one")
-                                 })
-                                 .disabled(punchlineOpacity == 0.0 ? true : false)
-                                 .buttonStyle(.borderedProminent)
+                    Task {
+                        // Get another joke
+                        withAnimation {
+                            currentJoke = nil
+                        }
+                        currentJoke = await NetworkService.fetch()
+                    }
+                    }, label: {
+                        Text("Fetch another one")
+                    })
+                    .disabled(punchlineOpacity == 0.0 ? true : false)
+                    .buttonStyle(.borderedProminent)
+                
+                ButtonStyle(action: {
+                    
+                    Task {
+                        // Write to database
+                        if let currentJoke = currentJoke {
+                            try await db!.transaction { core in
+                                try core.query("INSERT INTO Joke (id, type, setup, punchline) VALUES (?, ?, ?, ?)",
+                                               currentJoke.id,
+                                               currentJoke.type,
+                                               currentJoke.setup,
+                                               currentJoke.punchline)
+                            }
+                        }
+                    }
+                }
                 
             }
             .navigationTitle("Random Jokes")
@@ -85,5 +105,7 @@ struct JokeView: View {
 struct JokeView_Previews: PreviewProvider {
     static var previews: some View {
         JokeView()
+            // Make the database avalible to this view in Xcode Previews
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }
