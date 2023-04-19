@@ -19,13 +19,15 @@ struct FavoritesView: View {
     
     // MARK: Computed properties
     var body: some View {
-        List(favoriteJokes.results) { currentJoke in
-            VStack(alignment: .leading) {
-                Text(currentJoke.setup)
-                    .bold()
-                Text(currentJoke.punchline)
+        NavigationView {
+            List(favoriteJokes.results) { currentJoke in
+                VStack(alignment: .leading) {
+                    Text(currentJoke.setup)
+                        .bold()
+                    Text(currentJoke.punchline)
+                }
             }
-            
+            .navigationTitle("Favorites")
         }
     }
 }
