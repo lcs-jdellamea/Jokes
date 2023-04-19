@@ -15,6 +15,7 @@
 		6FBEFD0829EDCBC90082E116 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBEFD0729EDCBC90082E116 /* NetworkService.swift */; };
 		6FBEFD0B29F02EEA0082E116 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 6FBEFD0A29F02EEA0082E116 /* Blackbird */; };
 		6FBEFD0D29F02FD20082E116 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6FBEFD0C29F02FD20082E116 /* db.sqlite */; };
+		6FBEFD1029F031190082E116 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBEFD0F29F031190082E116 /* AppDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		6FBEFD0429EDCA0C0082E116 /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 		6FBEFD0729EDCBC90082E116 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		6FBEFD0C29F02FD20082E116 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = db.sqlite; path = Jokes/db.sqlite; sourceTree = SOURCE_ROOT; };
+		6FBEFD0F29F031190082E116 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		6FBEFCF129EDC5650082E116 /* Jokes */ = {
 			isa = PBXGroup;
 			children = (
+				6FBEFD0E29F030DB0082E116 /* Helpers */,
 				6FBEFCF229EDC5650082E116 /* JokesApp.swift */,
 				6FBEFD0329EDC9F30082E116 /* Model */,
 				6FBEFD0629EDCB9E0082E116 /* Services */,
@@ -100,6 +103,14 @@
 				6FBEFD0729EDCBC90082E116 /* NetworkService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		6FBEFD0E29F030DB0082E116 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6FBEFD0F29F031190082E116 /* AppDatabase.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 				6FBEFD0129EDC64E0082E116 /* JokeView.swift in Sources */,
 				6FBEFD0829EDCBC90082E116 /* NetworkService.swift in Sources */,
 				6FBEFD0529EDCA0C0082E116 /* Joke.swift in Sources */,
+				6FBEFD1029F031190082E116 /* AppDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
