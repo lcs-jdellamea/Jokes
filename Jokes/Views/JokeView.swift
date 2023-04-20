@@ -106,7 +106,9 @@ struct JokeView: View {
         }
         //Create an asynchronous task to be performed as this view appears
         .task {
-            currentJoke = await NetworkService.fetch()
+            if currentJoke == nil {
+                currentJoke = await NetworkService.fetch()
+            }
         }
     }
 }
