@@ -27,7 +27,7 @@ struct FavoritesView: View {
                     Text(currentJoke.punchline)
                 }
             }
-            .navigationTitle("Favorites")
+            .navigationTitle("Favorite Jokes")
         }
     }
 }
