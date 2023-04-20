@@ -102,6 +102,8 @@ struct JokeView: View {
                 })
                 // Disable button until punchline iss shown
                 .disabled(punchlineOpacity == 0.0 ? true : false)
+                // Once saved, disable the button so we can't save the joke twice
+                .disabled(punchlineOpacity == 0.0 ? true : false)
                 // Use another color to differentiate from first button
                 .tint(.green)
                 .buttonStyle(.borderedProminent)
