@@ -21,6 +21,9 @@ struct JokeView: View {
     // The current joke to display
     @State var currentJoke: Joke?
     
+    // Track whether current joke has been saved to database
+    @State var savedToDatabase = false
+    
     //  MARK: Computed properties
     var body: some View {
         NavigationView {
@@ -87,6 +90,9 @@ struct JokeView: View {
                                                currentJoke.type,
                                                currentJoke.setup,
                                                currentJoke.punchline)
+                                
+                                // Record that this joke has been saved
+                                savedToDatabase = true
                             }
                         }
                     }
