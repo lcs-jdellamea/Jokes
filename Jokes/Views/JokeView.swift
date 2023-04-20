@@ -76,7 +76,7 @@ struct JokeView: View {
                     .disabled(punchlineOpacity == 0.0 ? true : false)
                     .buttonStyle(.borderedProminent)
                 
-                ButtonStyle(action: {
+                Button(action: {
                     
                     Task {
                         // Write to database
@@ -90,7 +90,11 @@ struct JokeView: View {
                             }
                         }
                     }
-                }
+                    
+                }, label: {
+                    Text("Save for later")
+                })
+                .buttonStyle(.borderedProminent)
                 
             }
             .navigationTitle("Random Jokes")
